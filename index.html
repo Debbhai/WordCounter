@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4429273213053198"
+     crossorigin="anonymous"></script>
+     
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Counter</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-black to-blue-900 text-white flex items-center justify-center h-screen p-4">
+
+  <div class="bg-gradient-to-r from-blue-800 to-blue-600 p-8 rounded-lg shadow-xl w-full max-w-lg relative">
+    <h1 class="text-3xl font-bold mb-6 text-center text-white">Word Counter</h1>
+
+    <!-- Textarea for input -->
+    <textarea id="textInput" 
+              placeholder="Start typing or paste your text here..." 
+              oninput="countWords()" 
+              class="w-full h-40 p-4 rounded-lg border-2 border-gray-300 bg-black text-green-500 placeholder-green-500 focus:outline-none focus:border-blue-500 transition-colors mb-6"></textarea>
+    
+    <!-- Word and Character Count Results -->
+    <div class="text-lg mb-4">
+      <p><strong>Word Count: </strong><span id="wordCount">0</span></p>
+      <p><strong>Character Count: </strong><span id="charCount">0</span></p>
+    </div>
+
+    <!-- Buttons: Clear and Paste -->
+    <div class="absolute bottom-6 right-6 flex space-x-4">
+      <!-- Clear All Button -->
+      <button onclick="clearAll()" class="border-2 border-green-500 bg-black text-white py-2 px-4 rounded-lg hover:bg-green-500 hover:text-black transition-colors">
+        Clear All
+      </button>
+
+      <!-- Paste Button -->
+      <button onclick="pasteText()" class="border-2 border-green-500 bg-black text-green-500 py-2 px-4 rounded-lg hover:bg-green-500 hover:text-black transition-colors">
+        PASTE
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Function to count words and characters
+    function countWords() {
+      const text = document.getElementById('textInput').value;
+
+      // Count words by splitting the string by spaces and filtering out empty entries
+      const words = text.trim().split(/\s+/).filter(Boolean);
+      const wordCount = words.length;
+
+      // Count characters excluding spaces
+      const charCount = text.replace(/\s/g, '').length;
+
+      // Update the displayed counts in the HTML
+      document.getElementById('wordCount').textContent = wordCount;
+      document.getElementById('charCount').textContent = charCount;
+    }
+
+    // Function to clear all content
+    function clearAll() {
+      document.getElementById('textInput').value = ''; // Clear the text area
+      document.getElementById('wordCount').textContent = 0; // Reset word count
+      document.getElementById('charCount').textContent = 0; // Reset character count
+    }
+
+    // Function to paste clipboard content
+    function pasteText() {
+      navigator.clipboard.readText().then(text => {
+        document.getElementById('textInput').value = text; // Paste the clipboard text into the textarea
+        countWords(); // Recalculate the word and character count after pasting
+      }).catch(err => {
+        console.error('Failed to read clipboard contents: ', err);
+      });
+    }
+  </script>
+
+</body>
+</html>
