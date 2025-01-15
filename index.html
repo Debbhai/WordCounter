@@ -1,55 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4429273213053198"
-     crossorigin="anonymous"></script>
-     
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4429273213053198" crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Word Counter</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-r from-black to-blue-900 text-white flex items-center justify-center h-screen p-4">
+<body class="bg-gradient-to-r from-black to-blue-900 text-white flex flex-col items-center justify-between h-screen p-4">
 
-  <div class="bg-gradient-to-r from-blue-800 to-blue-600 p-8 rounded-lg shadow-xl w-full max-w-lg relative">
-    <h1 class="text-3xl font-bold mb-6 text-center text-white">Word Counter</h1>
-
-    <!-- Instructions Text -->
-    <div class="text-lg mb-6">
-      <p>Welcome to the Word Counter tool! You can use this tool to easily count the number of words and characters in any text. Simply type or paste your text into the input area below, and the tool will automatically calculate the word and character count.</p>
-      <p>Use the buttons below to:</p>
-      <ul class="list-disc pl-6">
-        <li><strong>Clear All:</strong> Erase the current text and reset the counts.</li>
-        <li><strong>Paste:</strong> Paste text from your clipboard into the input area.</li>
+  <!-- Main Content: Instructions and Word Counter Box -->
+  <div class="flex space-x-8 w-full max-w-6xl items-center">
+    
+    <!-- Left side: Instructions -->
+    <div class="bg-blue-1000 p-0 rounded-lg shadow-lg w-1/6">
+      <h2 class="text-xl font-bold mb-4 text-center">Instructions</h2>
+      <ul class="list-disc pl-6 text-lg">
+        <li><strong>Typing or Pasting Text:</strong> Start typing or paste your content into the large text box.</li>
+        <li><strong>Automatic Updates:</strong> The tool will calculate and display the word and character counts as you type or after pasting text.</li>
+        <li><strong>Clear All:</strong> Press the "Clear All" button to erase the text and reset the counts.</li>
+        <li><strong>Paste:</strong> Press the "Paste" button to insert text from your clipboard directly into the text area.</li>
       </ul>
     </div>
 
-    <!-- Textarea for input -->
-    <textarea id="textInput" 
-              placeholder="Start typing or paste your text here..." 
-              oninput="countWords()" 
-              class="w-full h-40 p-4 rounded-lg border-2 border-gray-300 bg-black text-green-500 placeholder-green-500 focus:outline-none focus:border-blue-500 transition-colors mb-6"></textarea>
+    <!-- Right side: Word Counter Box -->
+    <div class="bg-blue-600 p-8 rounded-lg shadow-lg w-2/3">
+      <h1 class="text-3xl font-bold mb-6 text-center text-white">Word Counter</h1>
+
+      <!-- Textarea for input -->
+      <textarea id="textInput" 
+                placeholder="Start typing or paste your text here..." 
+                oninput="countWords()" 
+                class="w-full h-40 p-4 rounded-lg border-2 border-gray-300 bg-black text-green-500 placeholder-green-500 focus:outline-none focus:border-blue-500 transition-colors mb-6"></textarea>
     
-    <!-- Word and Character Count Results -->
-    <div class="text-lg mb-4">
-      <p><strong>Word Count: </strong><span id="wordCount">0</span></p>
-      <p><strong>Character Count: </strong><span id="charCount">0</span></p>
+      <!-- Word and Character Count Results -->
+      <div class="text-lg mb-4">
+        <p><strong>Word Count: </strong><span id="wordCount">0</span></p>
+        <p><strong>Character Count: </strong><span id="charCount">0</span></p>
+      </div>
+
+      <!-- Buttons: Clear and Paste -->
+      <div class="flex space-x-4 justify-center">
+        <!-- Clear All Button -->
+        <button onclick="clearAll()" class="border-2 border-green-500 bg-black text-white py-2 px-4 rounded-lg hover:bg-green-500 hover:text-black transition-colors">
+          Clear All
+        </button>
+
+        <!-- Paste Button -->
+        <button onclick="pasteText()" class="border-2 border-green-500 bg-black text-green-500 py-2 px-4 rounded-lg hover:bg-green-500 hover:text-black transition-colors">
+          PASTE
+        </button>
+      </div>
     </div>
 
-    <!-- Buttons: Clear and Paste -->
-    <div class="absolute bottom-6 right-6 flex space-x-4">
-      <!-- Clear All Button -->
-      <button onclick="clearAll()" class="border-2 border-green-500 bg-black text-white py-2 px-4 rounded-lg hover:bg-green-500 hover:text-black transition-colors">
-        Clear All
-      </button>
-
-      <!-- Paste Button -->
-      <button onclick="pasteText()" class="border-2 border-green-500 bg-black text-green-500 py-2 px-4 rounded-lg hover:bg-green-500 hover:text-black transition-colors">
-        PASTE
-      </button>
-    </div>
   </div>
+
+  <!-- Privacy Policy Section -->
+  <div class="bg-blue-950 text-white text-center py-4 mt-6 w-full max-w-4xl rounded-lg shadow-lg">
+    <h2 class="text-lg font-bold">Privacy Policy</h2>
+    <p class="mt-2 text-sm">
+      We value your privacy. This tool does not collect, store, or share any data you enter. All text entered is processed locally on your device, and no personal data is transmitted. Use this tool at your own discretion.
+    </p>
+    <p class="mt-2 text-sm">
+      By using this tool, you agree to this privacy policy. If you have any questions, feel free to contact us.
+    </p>
+  </div>
+
+  <!-- Footer Section: About, Contact, and Terms of Service -->
+  <footer class="w-full text-center py-4 mt-4 bg-blue-1000 text-white">
+    <div class="flex justify-center space-x-8 text-sm">
+      <a href="about.html" class="hover:underline">About</a>
+      <a href="contact.html" class="hover:underline">Contact</a>
+      <a href="terms.html" class="hover:underline">Terms of Service</a>
+    </div>
+  </footer>
 
   <script>
     // Function to count words and characters
