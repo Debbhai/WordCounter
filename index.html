@@ -12,8 +12,6 @@
 
   <!-- Main Content: Word Counter Box -->
   <div class="flex items-center justify-center w-full h-full">
-    
-    <!-- Word Counter Box -->
     <div class="bg-blue-600 p-8 rounded-lg shadow-lg w-full max-w-2xl">
       <h1 class="text-3xl font-bold mb-6 text-center text-white"><u>Word Counter</u></h1>
 
@@ -39,7 +37,6 @@
         </button>
       </div>
     </div>
-
   </div>
 
   <!-- Privacy Policy Section -->
@@ -64,29 +61,46 @@
   </footer>
 
   <script>
+    // Function to count words and characters
     function countWords() {
       const text = document.getElementById('textInput').value;
+
+      // Count words by splitting the string by spaces and filtering out empty entries
       const words = text.trim().split(/\s+/).filter(Boolean);
       const wordCount = words.length;
+
+      // Count characters excluding spaces
       const charCount = text.replace(/\s/g, '').length;
 
-      document.getElementById('wordCount').textContent = wordCount;
-      document.getElementById('charCount').textContent = charCount;
+      // Update the displayed counts in the HTML
+      document.getElementById('wordCount').textContent = wordCount.toLocaleString();
+      document.getElementById('charCount').textContent = charCount.toLocaleString();
     }
 
+    // Function to clear all content
     function clearAll() {
-      document.getElementById('textInput').value = '';
-      document.getElementById('wordCount').textContent = 0;
-      document.getElementById('charCount').textContent = 0;
+      document.getElementById('textInput').value = ''; // Clear the text area
+      document.getElementById('wordCount').textContent = 0; // Reset word count
+      document.getElementById('charCount').textContent = 0; // Reset character count
     }
 
+    // Function to paste clipboard content
     function pasteText() {
-      navigator.clipboard.readText().then(text => {
-        document.getElementById('textInput').value = text;
-        countWords();
-      }).catch(err => {
-        console.error('Failed to read clipboard contents: ', err);
-      });
+      // Use async/await to handle clipboard access gracefully
+      (async () => {
+        try {
+          const text = await navigator.clipboard.readText(); // Read clipboard text
+          const textArea = document.getElementById('textInput');
+          
+          // Append new text instead of replacing
+          textArea.value += text; 
+          
+          countWords(); // Recalculate the word and character count
+        } catch (err) {
+          console.error('Failed to read clipboard contents:', err);
+          alert('Clipboard access failed. Please allow permissions.');
+        }
+      })();
     }
   </script>
 
