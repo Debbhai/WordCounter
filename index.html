@@ -11,10 +11,10 @@
 <body class="bg-gradient-to-r from-black to-blue-900 text-white flex flex-col items-center justify-between h-screen p-4">
 
   <!-- Main Content: Word Counter Box -->
-  <div class="flex space-x-8 w-full max-w-6xl items-center">
+  <div class="flex items-center justify-center w-full h-full">
     
-    <!-- Right side: Word Counter Box -->
-    <div class="bg-blue-600 p-8 rounded-lg shadow-lg w-2/3">
+    <!-- Word Counter Box -->
+    <div class="bg-blue-600 p-8 rounded-lg shadow-lg w-full max-w-2xl">
       <h1 class="text-3xl font-bold mb-6 text-center text-white"><u>Word Counter</u></h1>
 
       <!-- Textarea for input -->
@@ -31,12 +31,9 @@
 
       <!-- Buttons: Clear and Paste -->
       <div class="flex space-x-4 justify-center">
-        <!-- Clear All Button -->
         <button onclick="clearAll()" class="border-2 border-green-500 bg-black text-white py-2 px-4 rounded-lg hover:bg-green-500 hover:text-black transition-colors">
           Clear All
         </button>
-
-        <!-- Paste Button -->
         <button onclick="pasteText()" class="border-2 border-green-500 bg-black text-green-500 py-2 px-4 rounded-lg hover:bg-green-500 hover:text-black transition-colors">
           PASTE
         </button>
@@ -56,7 +53,7 @@
     </p>
   </div>
 
-  <!-- Footer Section: About, Contact, Terms of Service and Introduction -->
+  <!-- Footer Section -->
   <footer class="w-full text-center py-4 mt-4 bg-blue-1000 text-white">
     <div class="flex justify-center space-x-8 text-sm">
       <a href="about.html" class="hover:underline">About us</a>
@@ -67,34 +64,26 @@
   </footer>
 
   <script>
-    // Function to count words and characters
     function countWords() {
       const text = document.getElementById('textInput').value;
-
-      // Count words by splitting the string by spaces and filtering out empty entries
       const words = text.trim().split(/\s+/).filter(Boolean);
       const wordCount = words.length;
-
-      // Count characters excluding spaces
       const charCount = text.replace(/\s/g, '').length;
 
-      // Update the displayed counts in the HTML
       document.getElementById('wordCount').textContent = wordCount;
       document.getElementById('charCount').textContent = charCount;
     }
 
-    // Function to clear all content
     function clearAll() {
-      document.getElementById('textInput').value = ''; // Clear the text area
-      document.getElementById('wordCount').textContent = 0; // Reset word count
-      document.getElementById('charCount').textContent = 0; // Reset character count
+      document.getElementById('textInput').value = '';
+      document.getElementById('wordCount').textContent = 0;
+      document.getElementById('charCount').textContent = 0;
     }
 
-    // Function to paste clipboard content
     function pasteText() {
       navigator.clipboard.readText().then(text => {
-        document.getElementById('textInput').value = text; // Paste the clipboard text into the textarea
-        countWords(); // Recalculate the word and character count after pasting
+        document.getElementById('textInput').value = text;
+        countWords();
       }).catch(err => {
         console.error('Failed to read clipboard contents: ', err);
       });
