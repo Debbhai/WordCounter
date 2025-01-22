@@ -10,18 +10,18 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-r from-black to-blue-900 text-white flex flex-col items-center justify-between h-screen p-4">
+<body class="bg-gradient-to-r from-black to-blue-900 text-white flex flex-col items-center justify-between min-h-screen p-4">
 
   <!-- Header Section with Artistic Design -->
-  <header class="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 py-6 shadow-lg rounded-lg mb-8">
-    <div class="container mx-auto flex items-center justify-between px-8">
+  <header class="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 py-4 sm:py-6 shadow-lg rounded-lg mb-8">
+    <div class="container mx-auto flex flex-wrap items-center justify-between px-4 sm:px-8">
       <!-- Logo with Animation -->
       <a href="/" class="flex items-center transition-all duration-300 transform hover:scale-110">
-        <img src="word.png" alt="Website Logo" class="h-12 w-auto mr-3 animate-bounce">
-        <span class="text-3xl font-extrabold text-white">Word Counter</span> <!-- Changed to white -->
+        <img src="word.png" alt="Website Logo" class="h-10 sm:h-12 w-auto mr-3 animate-bounce">
+        <span class="text-xl sm:text-3xl font-extrabold text-white">Word Counter</span>
       </a>
       <!-- Navigation Links with Hover Effects -->
-      <nav class="flex space-x-8 text-white text-xl">
+      <nav class="flex flex-wrap space-x-4 sm:space-x-8 text-white text-sm sm:text-xl mt-4 sm:mt-0">
         <a href="about.html" class="hover:text-yellow-300 transition-colors">About us</a>
         <a href="contact.html" class="hover:text-yellow-300 transition-colors">Contact us</a>
         <a href="instructions.html" class="hover:text-yellow-300 transition-colors">Instructions</a>
@@ -30,24 +30,26 @@
   </header>
 
   <!-- Main Content: Word Counter Box -->
-  <div class="flex items-center justify-center w-full h-full">
-    <div class="bg-blue-600 p-8 rounded-lg shadow-lg w-full max-w-2xl">
-      <h1 class="text-3xl font-bold mb-6 text-center text-white"><u>Word Counter</u></h1>
+  <div class="flex items-center justify-center w-full flex-grow">
+    <div class="bg-blue-600 p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-md sm:max-w-2xl">
+      <h1 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-white">
+        <u>Word Counter</u>
+      </h1>
 
       <!-- Textarea for input -->
       <textarea id="textInput" 
                 placeholder="Start typing or paste your text here..." 
                 oninput="countWords()" 
-                class="w-full h-40 p-4 rounded-lg border-2 border-gray-300 bg-black text-green-500 placeholder-green-500 focus:outline-none focus:border-blue-500 transition-colors mb-6"></textarea>
+                class="w-full h-32 sm:h-40 p-4 rounded-lg border-2 border-gray-300 bg-black text-green-500 placeholder-green-500 focus:outline-none focus:border-blue-500 transition-colors mb-4 sm:mb-6"></textarea>
     
       <!-- Word and Character Count Results -->
-      <div class="text-lg mb-4">
+      <div class="text-lg mb-4 sm:mb-6">
         <p><strong>Word Count: </strong><span id="wordCount">0</span></p>
         <p><strong>Character Count: </strong><span id="charCount">0</span></p>
       </div>
 
       <!-- Buttons: Clear and Paste -->
-      <div class="flex space-x-4 justify-center">
+      <div class="flex flex-wrap gap-4 justify-center">
         <button onclick="clearAll()" class="border-2 border-green-500 bg-black text-white py-2 px-4 rounded-lg hover:bg-green-500 hover:text-black transition-colors">
           Clear All
         </button>
@@ -59,8 +61,8 @@
   </div>
 
   <!-- Footer Section -->
-  <footer class="w-full text-center py-4 mt-4 bg-blue-1000 text-white">
-    <div class="flex justify-center space-x-8 text-sm">
+  <footer class="w-full text-center py-4 mt-4 bg-blue-800 text-white">
+    <div class="flex flex-wrap justify-center space-x-4 text-xs sm:text-sm">
       <a href="terms.html" class="hover:underline">Terms of Service</a>
       <a href="privacy.html" class="hover:underline">Privacy</a>
       <a href="AdSense-Program-Policies.html" class="hover:underline">AdSense Program Policies</a>
