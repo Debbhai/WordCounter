@@ -4,27 +4,117 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Introduction</title>
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gradient-to-r from-black to-blue-900 text-white flex items-center justify-center min-h-screen p-6">
+  <style>
+    /* Reverse background */
+    body {
+      background: linear-gradient(to right, #000000, #1E3A8A); /* Black to blue gradient */
+    }
 
-  <div class="bg-blue-1000 p-8 rounded-lg shadow-lg w-full max-w-3xl">
+    /* Button styling */
+    .btn {
+      padding: 12px 25px;  /* Adjust padding to make the button fit the text */
+      border: none;
+      outline: none;
+      color: #FFF;
+      cursor: pointer;
+      position: relative;
+      z-index: 0;
+      border-radius: 12px;
+      display: inline-block;
+      margin-top: 20px;
+      text-align: center;   /* Ensures the text is centered within the button */
+    }
+
+    .btn::after {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #333;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+    }
+
+    /* Glow effect */
+    .btn::before {
+      content: "";
+      background: linear-gradient(
+        45deg,
+        #FF0000, #FF7300, #FFFB00, #48FF00,
+        #00FFD5, #002BFF, #FF00C8, #FF0000
+      );
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      background-size: 600%;
+      z-index: -1;
+      width: calc(100% + 4px);
+      height:  calc(100% + 4px);
+      filter: blur(8px);
+      animation: glowing 20s linear infinite;
+      transition: opacity .3s ease-in-out;
+      border-radius: 10px;
+      opacity: 0;
+    }
+
+    @keyframes glowing {
+      0% {background-position: 0 0;}
+      50% {background-position: 400% 0;}
+      100% {background-position: 0 0;}
+    }
+
+    /* Hover effect */
+    .btn:hover::before {
+      opacity: 1;
+    }
+
+    .btn:active:after {
+      background: transparent;
+    }
+
+    .btn:active {
+      color: #000;
+      font-weight: bold;
+    }
+
+    /* Custom neon green border color */
+    .border-neon-green {
+      border-color: #39ff14;
+    }
+
+    /* Button glow effect on click */
+    #back-to-home-button:active {
+      box-shadow: 0 0 10px #ff0080, 0 0 20px #ff0080, 0 0 30px #39ff14, 0 0 40px #39ff14;
+      background: linear-gradient(45deg, #ff0080, #39ff14);
+      color: white;
+    }
+
+  </style>
+</head>
+<body class="text-white flex items-center justify-center min-h-screen p-6 bg-gradient-to-r from-black to-blue-900">
+
+  <!-- Adjusted blue box size -->
+  <div class="bg-blue-1000 p-6 rounded-lg shadow-lg w-full max-w-lg">
     <h1 class="text-3xl font-bold text-center mb-6"><u>Introduction</u></h1>
     <p class="text-lg mb-4">
-        <strong>Instructions:</strong>
+        <strong><u>Instructions</u>:</strong>
     </p>
     <ul class="list-disc pl-6 text-lg">
       <li><strong><u>Typing or Pasting Text :</u></strong> Start typing or paste your content into the large text box.</li>
       <li><strong><u>Automatic Updates :</u></strong> The tool will calculate and display the word and character counts as you type or after pasting text.</li>
       <li><strong><u>Clear All :</u></strong> Press the "Clear All" button to erase the text and reset the counts.</li>
       <li><strong><u>Paste :</u></strong> Press the "Paste" button to insert text from your clipboard directly into the text area.</li>
-      <li><strong><u>Extending of Text Box :</u></strong> By draging the text box from the right bottom you can extend it as your preference. </li>
+      <li><strong><u>Extending of Text Box :</u></strong> By dragging the text box from the right bottom you can extend it as your preference. </li>
     </ul>
-    <a href="index.html" class="block text-center mt-6 text-green-500 underline hover:text-green-400">
-      Back to Word Counter
+    <a href="index.html" class="btn text-center mx-auto block">
+      ← Back to Home
     </a>
   </div>
 
+  <a href="index.html" >
+  </a>
 </body>
 </html>

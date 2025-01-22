@@ -5,10 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Word Counter</title>
+  <!-- Add favicon -->
+  <link rel="icon" type="image/png" href="word.png">
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-r from-black to-blue-900 text-white flex flex-col items-center justify-between h-screen p-4">
+
+  <!-- Header Section with Artistic Design -->
+  <header class="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 py-6 shadow-lg rounded-lg mb-8">
+    <div class="container mx-auto flex items-center justify-between px-8">
+      <!-- Logo with Animation -->
+      <a href="/" class="flex items-center transition-all duration-300 transform hover:scale-110">
+        <img src="word.png" alt="Website Logo" class="h-12 w-auto mr-3 animate-bounce">
+        <span class="text-3xl font-extrabold text-white">Word Counter</span> <!-- Changed to white -->
+      </a>
+      <!-- Navigation Links with Hover Effects -->
+      <nav class="flex space-x-8 text-white text-xl">
+        <a href="about.html" class="hover:text-yellow-300 transition-colors">About us</a>
+        <a href="contact.html" class="hover:text-yellow-300 transition-colors">Contact us</a>
+        <a href="instructions.html" class="hover:text-yellow-300 transition-colors">Instructions</a>
+      </nav>
+    </div>
+  </header>
 
   <!-- Main Content: Word Counter Box -->
   <div class="flex items-center justify-center w-full h-full">
@@ -42,12 +61,9 @@
   <!-- Footer Section -->
   <footer class="w-full text-center py-4 mt-4 bg-blue-1000 text-white">
     <div class="flex justify-center space-x-8 text-sm">
-      <a href="about.html" class="hover:underline">About us</a>
-      <a href="contact.html" class="hover:underline">Contact us</a>
       <a href="terms.html" class="hover:underline">Terms of Service</a>
       <a href="privacy.html" class="hover:underline">Privacy</a>
       <a href="AdSense-Program-Policies.html" class="hover:underline">AdSense Program Policies</a>
-      <a href="instructions.html" class="hover:underline">Instructions</a>
     </div>
   </footer>
 

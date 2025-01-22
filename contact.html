@@ -5,8 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Reverse background */
+    body {
+      background: linear-gradient(to right, #000000, #1E3A8A); /* Black to blue gradient */
+    }
+
+    /* Button styling */
+    .btn {
+      margin: 100px;
+      padding: 15px 40px;
+      border: none;
+      outline: none;
+      color: #FFF;
+      cursor: pointer;
+      position: relative;
+      z-index: 0;
+      border-radius: 12px;
+    }
+
+    .btn::after {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #333;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+    }
+
+    /* Glow effect */
+    .btn::before {
+      content: "";
+      background: linear-gradient(
+        45deg,
+        #FF0000, #FF7300, #FFFB00, #48FF00,
+        #00FFD5, #002BFF, #FF00C8, #FF0000
+      );
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      background-size: 600%;
+      z-index: -1;
+      width: calc(100% + 4px);
+      height:  calc(100% + 4px);
+      filter: blur(8px);
+      animation: glowing 20s linear infinite;
+      transition: opacity .3s ease-in-out;
+      border-radius: 10px;
+      opacity: 0;
+    }
+
+    @keyframes glowing {
+      0% {background-position: 0 0;}
+      50% {background-position: 400% 0;}
+      100% {background-position: 0 0;}
+    }
+
+    /* Hover effect */
+    .btn:hover::before {
+      opacity: 1;
+    }
+
+    .btn:active:after {
+      background: transparent;
+    }
+
+    .btn:active {
+      color: #000;
+      font-weight: bold;
+    }
+
+  </style>
 </head>
-<body class="bg-gradient-to-r from-black to-blue-900 text-white flex flex-col items-center justify-center min-h-screen p-4">
+<body class="text-white flex flex-col items-center justify-center min-h-screen p-4">
 
   <div class="bg-blue-1000 p-6 rounded-lg shadow-lg w-full max-w-3xl text-center">
     <h1 class="text-3xl font-bold mb-4"><u>Contact Us</u></h1>
@@ -21,7 +95,9 @@
     </p>
   </div>
 
-  <a href="index.html" class="mt-6 text-blue-400 hover:underline">← Back to Home</a>
+  <a href="index.html" class="btn">
+    ← Back to Home
+  </a>
 
 </body>
 </html>
