@@ -9,11 +9,31 @@
   <link rel="icon" type="image/png" href="word.png">
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom 3D Effect */
+    .shadow-3d {
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    }
+    .btn-3d {
+      transform: perspective(600px) translateZ(10px);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-3d:hover {
+      transform: perspective(600px) translateZ(20px);
+      box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.5);
+    }
+    .textarea-3d {
+      box-shadow: inset 4px 4px 6px rgba(0, 0, 0, 0.4), inset -4px -4px 6px rgba(255, 255, 255, 0.1);
+    }
+    .textarea-3d:focus {
+      box-shadow: 0px 0px 10px 2px rgba(30, 144, 255, 0.8);
+    }
+  </style>
 </head>
 <body class="bg-gradient-to-r from-black to-blue-900 text-white flex flex-col items-center justify-between min-h-screen p-4">
 
   <!-- Header Section with Artistic Design -->
-  <header class="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 py-4 sm:py-6 shadow-lg rounded-lg mb-8">
+  <header class="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 py-4 sm:py-6 shadow-lg rounded-lg mb-8 shadow-3d">
     <div class="container mx-auto flex flex-wrap items-center justify-between px-4 sm:px-8">
       <!-- Logo with Animation -->
       <a href="/" class="flex items-center transition-all duration-300 transform hover:scale-110">
@@ -31,7 +51,7 @@
 
   <!-- Main Content: Word Counter Box -->
   <div class="flex items-center justify-center w-full flex-grow">
-    <div class="bg-blue-600 p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-md sm:max-w-2xl">
+    <div class="bg-blue-600 p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-md sm:max-w-2xl shadow-3d">
       <h1 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-white">
         <u>Word Counter</u>
       </h1>
@@ -40,7 +60,7 @@
       <textarea id="textInput" 
                 placeholder="Start typing or paste your text here..." 
                 oninput="countWords()" 
-                class="w-full h-32 sm:h-40 p-4 rounded-lg border-2 border-gray-300 bg-black text-green-500 placeholder-green-500 focus:outline-none focus:border-blue-500 transition-colors mb-4 sm:mb-6"></textarea>
+                class="textarea-3d w-full h-32 sm:h-40 p-4 rounded-lg border-2 border-gray-300 bg-black text-green-500 placeholder-green-500 focus:outline-none transition-colors mb-4 sm:mb-6"></textarea>
     
       <!-- Word and Character Count Results -->
       <div class="text-lg mb-4 sm:mb-6">
@@ -50,10 +70,10 @@
 
       <!-- Buttons: Clear and Paste -->
       <div class="flex flex-wrap gap-4 justify-center">
-        <button onclick="clearAll()" class="border-2 border-green-500 bg-black text-white py-2 px-4 rounded-lg hover:bg-green-500 hover:text-black transition-colors">
+        <button onclick="clearAll()" class="btn-3d border-2 border-green-500 bg-black text-white py-2 px-4 rounded-lg hover:bg-green-500 hover:text-black transition-colors">
           Clear All
         </button>
-        <button onclick="pasteText()" class="border-2 border-green-500 bg-black text-green-500 py-2 px-4 rounded-lg hover:bg-green-500 hover:text-black transition-colors">
+        <button onclick="pasteText()" class="btn-3d border-2 border-green-500 bg-black text-green-500 py-2 px-4 rounded-lg hover:bg-green-500 hover:text-black transition-colors">
           PASTE
         </button>
       </div>
